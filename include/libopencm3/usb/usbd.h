@@ -86,6 +86,7 @@ extern const usbd_driver efm32lg_usb_driver;
 extern usbd_device * usbd_init(const usbd_driver *driver,
 			       const struct usb_device_descriptor *dev,
 			       const struct usb_config_descriptor *conf,
+                   const struct usb_bos_descriptor *bos,
 			       const char **strings, int num_strings,
 			       uint8_t *control_buffer,
 			       uint16_t control_buffer_size);
@@ -140,6 +141,9 @@ extern int usbd_register_set_config_callback(usbd_device *usbd_dev,
 /** Registers a "Set Interface" (alternate setting) callback */
 extern void usbd_register_set_altsetting_callback(usbd_device *usbd_dev,
 					usbd_set_altsetting_callback callback);
+
+/** Registers a non-contiguous string descriptor */
+extern void usbd_register_extra_string(usbd_device *usbd_dev, int index, const char* string);
 
 /* Functions to be provided by the hardware abstraction layer */
 extern void usbd_poll(usbd_device *usbd_dev);

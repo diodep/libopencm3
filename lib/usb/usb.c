@@ -42,6 +42,7 @@ LGPL License Terms @ref lgpl_license
 usbd_device *usbd_init(const usbd_driver *driver,
 		       const struct usb_device_descriptor *dev,
 		       const struct usb_config_descriptor *conf,
+               const struct usb_bos_descriptor *bos,
 		       const char **strings, int num_strings,
 		       uint8_t *control_buffer, uint16_t control_buffer_size)
 {
@@ -52,8 +53,11 @@ usbd_device *usbd_init(const usbd_driver *driver,
 	usbd_dev->driver = driver;
 	usbd_dev->desc = dev;
 	usbd_dev->config = conf;
+    usbd_dev->bos = bos;
 	usbd_dev->strings = strings;
 	usbd_dev->num_strings = num_strings;
+	usbd_dev->extra_string_idx = -1;
+	usbd_dev->extra_string = NULL;
 	usbd_dev->ctrl_buf = control_buffer;
 	usbd_dev->ctrl_buf_len = control_buffer_size;
 
@@ -92,6 +96,19 @@ void usbd_register_resume_callback(usbd_device *usbd_dev,
 void usbd_register_sof_callback(usbd_device *usbd_dev, void (*callback)(void))
 {
 	usbd_dev->user_callback_sof = callback;
+}
+
+void usbd_register_extra_string(usbd_device *usbd_dev, int index, const char* string)
+{
+	if (string != NULL && index > 0)
+	{
+		usbd_dev->extra_string_idx = index;
+		usbd_dev->extra_string = string;
+	}
+	else
+	{
+		usbd_dev->extra_string_idx = -1;
+	}
 }
 
 void _usbd_reset(usbd_device *usbd_dev)

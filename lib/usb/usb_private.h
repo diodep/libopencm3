@@ -47,6 +47,7 @@ LGPL License Terms @ref lgpl_license
 struct _usbd_device {
 	const struct usb_device_descriptor *desc;
 	const struct usb_config_descriptor *config;
+    const struct usb_bos_descriptor *bos;
 	const char **strings;
 	int num_strings;
 
@@ -91,6 +92,10 @@ struct _usbd_device {
 	usbd_set_altsetting_callback user_callback_set_altsetting;
 
 	const struct _usbd_driver *driver;
+
+	/* Extra, non-contiguous user string descriptor index and value */
+	int extra_string_idx;
+	const char* extra_string;
 
 	/* private driver data */
 
