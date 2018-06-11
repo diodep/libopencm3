@@ -86,7 +86,6 @@ extern const usbd_driver efm32lg_usb_driver;
 extern usbd_device * usbd_init(const usbd_driver *driver,
 			       const struct usb_device_descriptor *dev,
 			       const struct usb_config_descriptor *conf,
-                   const struct usb_bos_descriptor *bos,
 			       const char **strings, int num_strings,
 			       uint8_t *control_buffer,
 			       uint16_t control_buffer_size);

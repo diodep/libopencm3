@@ -42,7 +42,6 @@ LGPL License Terms @ref lgpl_license
 usbd_device *usbd_init(const usbd_driver *driver,
 		       const struct usb_device_descriptor *dev,
 		       const struct usb_config_descriptor *conf,
-               const struct usb_bos_descriptor *bos,
 		       const char **strings, int num_strings,
 		       uint8_t *control_buffer, uint16_t control_buffer_size)
 {
@@ -53,7 +52,6 @@ usbd_device *usbd_init(const usbd_driver *driver,
 	usbd_dev->driver = driver;
 	usbd_dev->desc = dev;
 	usbd_dev->config = conf;
-    usbd_dev->bos = bos;
 	usbd_dev->strings = strings;
 	usbd_dev->num_strings = num_strings;
 	usbd_dev->extra_string_idx = -1;
