@@ -33,5 +33,7 @@ LGPL License Terms @ref lgpl_license
 
 #include <libopencm3/stm32/common/dac_common_all.h>
 
+#define DAC_STATUS			MMIO32(DAC_BASE + 0x34)
+
 #endif
 

@@ -710,12 +710,10 @@ void rcc_clock_setup_in_hsi_out_64mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);   /* Set. 64MHz Max. 72MHz */
 
 	/*
-	 * Sysclk is running with 64MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_2WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set the PLL multiplication factor to 16.
@@ -764,12 +762,9 @@ void rcc_clock_setup_in_hsi_out_48mhz(void)
 	rcc_set_usbpre(RCC_CFGR_USBPRE_PLL_CLK_NODIV);  /*Set.48MHz Max.48MHz */
 
 	/*
-	 * Sysclk runs with 48MHz -> 1 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_1WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
 
 	/*
 	 * Set the PLL multiplication factor to 12.
@@ -817,12 +812,10 @@ void rcc_clock_setup_in_hsi_out_24mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV); /* Set. 24MHz Max. 24MHz */
 
 	/*
-	 * Sysclk is (will be) running with 24MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
 	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set the PLL multiplication factor to 6.
@@ -875,12 +868,10 @@ void rcc_clock_setup_in_hse_8mhz_out_24mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);    /* Set. 24MHz Max. 72MHz */
 
 	/*
-	 * Sysclk runs with 24MHz -> 0 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
 	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set the PLL multiplication factor to 3.
@@ -939,12 +930,9 @@ void rcc_clock_setup_in_hse_8mhz_out_72mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);    /* Set. 72MHz Max. 72MHz */
 
 	/*
-	 * Sysclk runs with 72MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_2WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
 
 	/*
 	 * Set the PLL multiplication factor to 9.
@@ -1003,12 +991,10 @@ void rcc_clock_setup_in_hse_12mhz_out_72mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);    /* Set. 72MHz Max. 72MHz */
 
 	/*
-	 * Sysclk runs with 72MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_2WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set the PLL multiplication factor to 9.
@@ -1067,12 +1053,10 @@ void rcc_clock_setup_in_hse_16mhz_out_72mhz(void)
 	rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);    /* Set. 72MHz Max. 72MHz */
 
 	/*
-	 * Sysclk runs with 72MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_2WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set the PLL multiplication factor to 9.
@@ -1115,12 +1099,10 @@ void rcc_clock_setup_in_hse_25mhz_out_72mhz(void)
 	rcc_set_sysclk_source(RCC_CFGR_SW_SYSCLKSEL_HSECLK);
 
 	/*
-	 * Sysclk runs with 72MHz -> 2 waitstates.
-	 * 0WS from 0-24MHz
-	 * 1WS from 24-48MHz
-	 * 2WS from 48-72MHz
+	 * GD32F1x0 series has no waitstates.
 	 */
-	flash_set_ws(FLASH_ACR_LATENCY_2WS);
+	flash_set_ws(FLASH_ACR_LATENCY_0WS);
+
 
 	/*
 	 * Set prescalers for AHB, ADC, ABP1, ABP2.
